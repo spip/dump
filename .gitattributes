@@ -1,5 +1,5 @@
 * text=auto !eol
-action/export_all.php -text
+action/sauvegarder.php -text
 base/import_all.php -text
 connect/dump.php -text
 exec/admin_restore.php -text
@@ -7,10 +7,10 @@ exec/import_all.php -text
 formulaires/sauvegarder.html -text
 formulaires/sauvegarder.php -text
 inc/dump.php -text
-inc/export.php -text
+inc/sauvegarder.php -text
 lang/dump_fr.php -text
 /plugin.xml -text
-prive/squelettes/contenu/page-backup.html -text
-prive/squelettes/contenu/page-backup_fin.html -text
-prive/squelettes/contenu/page-backup_fin_fonctions.php -text
+prive/squelettes/contenu/page-sauvegarde.html -text
+prive/squelettes/contenu/page-sauvegarde_fin.html -text
+prive/squelettes/contenu/page-sauvegarde_fin_fonctions.php -text
 prive/themes/spip/images/dump-32.png -text
