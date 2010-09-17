@@ -8,11 +8,6 @@ formulaires/sauvegarder.html -text
 formulaires/sauvegarder.php -text
 inc/dump.php -text
 inc/export.php -text
-inc/import.php -text
-inc/import_0_0.php -text
-inc/import_1_2.php -text
-inc/import_1_3.php -text
-inc/import_insere.php -text
 /plugin.xml -text
 prive/squelettes/contenu/page-backup.html -text
 prive/squelettes/contenu/page-backup_fin.html -text
