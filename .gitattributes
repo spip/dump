@@ -10,7 +10,11 @@ inc/dump.php -text
 inc/sauvegarder.php -text
 lang/dump_fr.php -text
 /plugin.xml -text
-prive/squelettes/contenu/page-sauvegarde.html -text
-prive/squelettes/contenu/page-sauvegarde_fin.html -text
-prive/squelettes/contenu/page-sauvegarde_fin_fonctions.php -text
+prive/squelettes/contenu/page-sauvegarder.html -text
+prive/squelettes/contenu/page-sauvegarder_fin.html -text
+prive/squelettes/contenu/page-sauvegarder_fin_fonctions.php -text
+prive/themes/spip/images/base-16.png -text
+prive/themes/spip/images/base-backup-16.png -text
+prive/themes/spip/images/base-edit-16.png -text
+prive/themes/spip/images/base-restore-16.png -text
 prive/themes/spip/images/dump-32.png -text
