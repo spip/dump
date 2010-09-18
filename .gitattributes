@@ -2,13 +2,13 @@
 action/restaurer.php -text
 action/sauvegarder.php -text
 base/import_all.php -text
+base/restaurer.php -text
 connect/dump.php -text
 formulaires/restaurer.html -text
 formulaires/restaurer.php -text
 formulaires/sauvegarder.html -text
 formulaires/sauvegarder.php -text
 inc/dump.php -text
-inc/restaurer.php -text
 inc/sauvegarder.php -text
 lang/dump_fr.php -text
 /plugin.xml -text
