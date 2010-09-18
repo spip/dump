@@ -4,12 +4,16 @@ base/import_all.php -text
 connect/dump.php -text
 exec/admin_restore.php -text
 exec/import_all.php -text
+formulaires/restaurer.html -text
+formulaires/restaurer.php -text
 formulaires/sauvegarder.html -text
 formulaires/sauvegarder.php -text
 inc/dump.php -text
 inc/sauvegarder.php -text
 lang/dump_fr.php -text
 /plugin.xml -text
+prive/squelettes/contenu/page-restaurer.html -text
+prive/squelettes/contenu/page-restaurer_fonctions.php -text
 prive/squelettes/contenu/page-sauvegarder.html -text
 prive/squelettes/contenu/page-sauvegarder_fonctions.php -text
 prive/themes/spip/images/base-16.png -text
