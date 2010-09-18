@@ -11,8 +11,7 @@ inc/sauvegarder.php -text
 lang/dump_fr.php -text
 /plugin.xml -text
 prive/squelettes/contenu/page-sauvegarder.html -text
-prive/squelettes/contenu/page-sauvegarder_fin.html -text
-prive/squelettes/contenu/page-sauvegarder_fin_fonctions.php -text
+prive/squelettes/contenu/page-sauvegarder_fonctions.php -text
 prive/themes/spip/images/base-16.png -text
 prive/themes/spip/images/base-backup-16.png -text
 prive/themes/spip/images/base-edit-16.png -text
