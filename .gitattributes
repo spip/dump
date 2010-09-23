@@ -1,7 +1,6 @@
 * text=auto !eol
 action/restaurer.php -text
 action/sauvegarder.php -text
-base/import_all.php -text
 base/restaurer.php -text
 connect/dump.php -text
 formulaires/restaurer.html -text
