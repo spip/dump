@@ -11,10 +11,10 @@ inc/dump.php -text
 inc/sauvegarder.php -text
 lang/dump_fr.php -text
 /plugin.xml -text
-prive/squelettes/contenu/page-restaurer.html -text
-prive/squelettes/contenu/page-restaurer_fonctions.php -text
-prive/squelettes/contenu/page-sauvegarder.html -text
-prive/squelettes/contenu/page-sauvegarder_fonctions.php -text
+prive/squelettes/contenu/restaurer.html -text
+prive/squelettes/contenu/restaurer_fonctions.php -text
+prive/squelettes/contenu/sauvegarder.html -text
+prive/squelettes/contenu/sauvegarder_fonctions.php -text
 prive/themes/spip/images/base-16.png -text
 prive/themes/spip/images/base-backup-16.png -text
 prive/themes/spip/images/base-edit-16.png -text
