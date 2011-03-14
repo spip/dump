@@ -3,6 +3,8 @@ action/restaurer.php -text
 action/sauvegarder.php -text
 base/restaurer.php -text
 connect/dump.php -text
+formulaires/inc-lister-sauvegardes.html -text
+formulaires/inc-lister-sauvegardes_fonctions.php -text
 formulaires/restaurer.html -text
 formulaires/restaurer.php -text
 formulaires/sauvegarder.html -text
