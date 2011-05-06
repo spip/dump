@@ -11,6 +11,7 @@ formulaires/sauvegarder.html -text
 formulaires/sauvegarder.php -text
 inc/dump.php -text
 inc/sauvegarder.php -text
+lang/dump.xml -text
 lang/dump_ar.php -text
 lang/dump_ast.php -text
 lang/dump_ay.php -text
