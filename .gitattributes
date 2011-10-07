@@ -1,6 +1,7 @@
 * text=auto !eol
 action/restaurer.php -text
 action/sauvegarder.php -text
+action/telecharger_dump.php -text
 base/restaurer.php -text
 connect/dump.php -text
 formulaires/inc-lister-sauvegardes.html -text
