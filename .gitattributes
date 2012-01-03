@@ -67,6 +67,7 @@ lang/dump_sv.php -text
 lang/dump_tr.php -text
 lang/dump_vi.php -text
 lang/dump_zh.php -text
+lang/paquet-dump.xml -text
 prive/squelettes/contenu/restaurer.html -text
 prive/squelettes/contenu/restaurer_fonctions.php -text
 prive/squelettes/contenu/sauvegarder.html -text
