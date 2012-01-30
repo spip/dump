@@ -74,6 +74,7 @@ prive/squelettes/contenu/restaurer.html -text
 prive/squelettes/contenu/restaurer_fonctions.php -text
 prive/squelettes/contenu/sauvegarder.html -text
 prive/squelettes/contenu/sauvegarder_fonctions.php -text
+prive/style_prive_plugin_dump.html -text
 prive/themes/spip/images/base-backup-16.png -text
 prive/themes/spip/images/base-backup-24.png -text
 prive/themes/spip/images/base-backup-32.png -text
