@@ -68,6 +68,7 @@ lang/dump_tr.php -text
 lang/dump_vi.php -text
 lang/dump_zh.php -text
 lang/paquet-dump.xml -text
+lang/paquet-dump_ar.php -text
 lang/paquet-dump_en.php -text
 lang/paquet-dump_sk.php -text
 prive/squelettes/contenu/restaurer.html -text
