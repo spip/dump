@@ -4,6 +4,7 @@ action/sauvegarder.php -text
 action/telecharger_dump.php -text
 base/restaurer.php -text
 connect/dump.php -text
+exec/base_restaurer.php -text
 formulaires/inc-lister-sauvegardes.html -text
 formulaires/inc-lister-sauvegardes_fonctions.php -text
 formulaires/restaurer.html -text
