@@ -74,6 +74,7 @@ lang/paquet-dump_en.php -text
 lang/paquet-dump_es.php -text
 lang/paquet-dump_fa.php -text
 lang/paquet-dump_it.php -text
+lang/paquet-dump_pt_br.php -text
 lang/paquet-dump_ru.php -text
 lang/paquet-dump_sk.php -text
 prive/squelettes/contenu/restaurer.html -text
