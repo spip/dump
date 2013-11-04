@@ -1,6 +1,8 @@
 <?php
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
-// Fichier source, a modifier dans svn://zone.spip.org/spip-zone/_core_/plugins/dump/lang/
+// extrait automatiquement de http://trad.spip.net/tradlang_module/dump?lang_cible=fr_fem
+// ** ne pas modifier le fichier **
+
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
@@ -64,7 +66,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'texte_restaurer_sauvegarde' => 'Cette option vous permet de restaurer une sauvegarde précédemment
 		effectuée de la base. À cet effet, le fichier contenant la sauvegarde doit avoir été
 		placé dans le répertoire @dossier@.
-		Soyez prudent avec cette fonctionnalité : <b>les modifications, pertes éventuelles, sont
+		Soyez prudente avec cette fonctionnalité : <b>les modifications, pertes éventuelles, sont
 		irréversibles.</b>',
 	'texte_sauvegarde' => 'Sauvegarder le contenu de la base',
 	'texte_sauvegarde_base' => 'Sauvegarder la base',
