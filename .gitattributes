@@ -69,6 +69,7 @@ lang/dump_ru.php -text
 lang/dump_sk.php -text
 lang/dump_sv.php -text
 lang/dump_tr.php -text
+lang/dump_uk.php -text
 lang/dump_vi.php -text
 lang/dump_zh.php -text
 lang/paquet-dump.xml -text
