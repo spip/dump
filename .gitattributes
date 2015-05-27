@@ -89,6 +89,7 @@ lang/paquet-dump_pt.php -text
 lang/paquet-dump_pt_br.php -text
 lang/paquet-dump_ru.php -text
 lang/paquet-dump_sk.php -text
+lang/paquet-dump_uk.php -text
 prive/squelettes/contenu/restaurer.html -text
 prive/squelettes/contenu/restaurer_fonctions.php -text
 prive/squelettes/contenu/sauvegarder.html -text
