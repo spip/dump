@@ -42,7 +42,6 @@ lang/dump_fr_tu.php -text
 lang/dump_gl.php -text
 lang/dump_hu.php -text
 lang/dump_id.php -text
-lang/dump_is.php -text
 lang/dump_it.php -text
 lang/dump_it_fem.php -text
 lang/dump_ja.php -text
@@ -51,7 +50,6 @@ lang/dump_lb.php -text
 lang/dump_my.php -text
 lang/dump_nb.php -text
 lang/dump_nl.php -text
-lang/dump_no.php -text
 lang/dump_oc_auv.php -text
 lang/dump_oc_gsc.php -text
 lang/dump_oc_lms.php -text
