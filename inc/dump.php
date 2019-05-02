@@ -82,12 +82,18 @@ function dump_type_serveur() {
 
 	// chercher si sqlite2 ou 3 est disponible
 	include_spip('req/sqlite3');
-	if (spip_versions_sqlite3()) {
+	if (function_exists('spip_versions_sqlite3') and spip_versions_sqlite3()) {
 		return 'sqlite3';
+	}
+ 	if (function_exists('spip_versions_sqlite3')) {
+		spip_log("ERREUR sqlite3 n'est pas correctement installé : "
+					."extension_loaded('pdo')=".extension_loaded('pdo')
+					." extension_loaded('pdo_sqlite')=".extension_loaded('pdo_sqlite'), 
+				_LOG_ERREUR);
 	}
 
 	include_spip('req/sqlite2');
-	if (spip_versions_sqlite2()) {
+	if (function_exists('spip_versions_sqlite2') and spip_versions_sqlite2()) {
 		return 'sqlite2';
 	}
 
