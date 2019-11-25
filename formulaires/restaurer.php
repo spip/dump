@@ -76,7 +76,11 @@ function formulaires_restaurer_verifier_dist() {
 			"</li>\n<li class='choix'>",
 			$tables
 		) . "</li></ol><input type='hidden' name='check_tables' value='oui' />\n";
-		if (!count(_request('tables')) and !_request('tout_restaurer') and _request('check_tables')) {
+		if (
+			!_request('tables')
+			and !_request('tout_restaurer')
+			and _request('check_tables')
+		) {
 			$erreurs['tout_restaurer'] = _T('dump:selectionnez_table_a_restaurer');
 		}
 	}
