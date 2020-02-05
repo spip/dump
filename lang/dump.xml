@@ -1,9 +1,9 @@
 <traduction
 	module="dump"
-	id="dump--dump-beeec"
+	id="dump--dump-525a1"
 	gestionnaire="salvatore"
 	url="https://trad.spip.net"
-	source="svn://zone.spip.org/spip-zone/_core_/plugins/dump/lang"
+	source="https://git.spip.net/spip/dump.git"
 	reference="fr">
 	<langue code="ar" url="https://trad.spip.net/tradlang_module/dump?lang_cible=ar" total="42" traduits="42" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
