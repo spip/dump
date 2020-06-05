@@ -52,6 +52,7 @@ function base_restaurer_dist($titre = '', $reprise = false) {
 
 		dump_serveur($status['connect']);
 		spip_connect('dump');
+		$res = false;
 
 		// au premier coup on ne fait rien sauf afficher l'ecran de sauvegarde
 		if (_request('step')) {
