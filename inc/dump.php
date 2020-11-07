@@ -88,13 +88,8 @@ function dump_type_serveur() {
  	if (function_exists('spip_versions_sqlite3')) {
 		spip_log("ERREUR sqlite3 n'est pas correctement installé : "
 					."extension_loaded('pdo')=".extension_loaded('pdo')
-					." extension_loaded('pdo_sqlite')=".extension_loaded('pdo_sqlite'), 
+					." extension_loaded('pdo_sqlite')=".extension_loaded('pdo_sqlite'),
 				_LOG_ERREUR);
-	}
-
-	include_spip('req/sqlite2');
-	if (function_exists('spip_versions_sqlite2') and spip_versions_sqlite2()) {
-		return 'sqlite2';
 	}
 
 	return '';
