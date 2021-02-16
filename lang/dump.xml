@@ -11,7 +11,8 @@
 	<langue code="ast" url="https://trad.spip.net/tradlang_module/dump?lang_cible=ast" total="42" traduits="10" relire="0" modifs="2" nouveaux="30" pourcent="23.81" />
 	<langue code="ay" url="https://trad.spip.net/tradlang_module/dump?lang_cible=ay" total="42" traduits="1" relire="0" modifs="0" nouveaux="41" pourcent="2.38" />
 	<langue code="bg" url="https://trad.spip.net/tradlang_module/dump?lang_cible=bg" total="42" traduits="9" relire="0" modifs="3" nouveaux="30" pourcent="21.43" />
-	<langue code="br" url="https://trad.spip.net/tradlang_module/dump?lang_cible=br" total="42" traduits="34" relire="0" modifs="2" nouveaux="6" pourcent="80.95">
+	<langue code="br" url="https://trad.spip.net/tradlang_module/dump?lang_cible=br" total="42" traduits="42" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="kerivo" lien="https://trad.spip.net/auteur/kerivo" />
 		<traducteur nom="nonobreizh" lien="https://trad.spip.net/auteur/nonobreizh" />
 	</langue>
 	<langue code="bs" url="https://trad.spip.net/tradlang_module/dump?lang_cible=bs" total="42" traduits="7" relire="0" modifs="5" nouveaux="30" pourcent="16.67" />
