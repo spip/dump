@@ -1,9 +1,9 @@
 <paquet
 	prefix="dump"
 	categorie="maintenance"
-	version="1.9.3"
+	version="1.10.0"
 	etat="stable"
-	compatibilite="[3.3.0-dev;3.3.*]"
+	compatibilite="[4.0.0-alpha;4.0.*]"
 	logo="prive/themes/spip/images/base-backup-32.png"
 >
 
