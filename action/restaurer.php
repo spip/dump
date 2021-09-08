@@ -42,7 +42,8 @@ function action_restaurer_dist($arg = null) {
 	$status_file = $arg;
 	define('_DUMP_STATUS_FILE', $status_file);
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
-	if (!lire_fichier($status_file, $status)
+	if (
+		!lire_fichier($status_file, $status)
 		or !$status = unserialize($status)
 	) {
 		include_spip('inc/headers');
@@ -50,7 +51,7 @@ function action_restaurer_dist($arg = null) {
 	} else {
 		utiliser_langue_visiteur();
 		$archive = '<br />' . joli_repertoire($status['archive']);
-		$action = _T('dump:info_restauration_sauvegarde', array('archive' => $archive));
+		$action = _T('dump:info_restauration_sauvegarde', ['archive' => $archive]);
 		$admin = charger_fonction('admin', 'inc');
 		echo $admin('restaurer', $action, '', true);
 	}

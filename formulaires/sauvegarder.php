@@ -35,7 +35,7 @@ function formulaires_sauvegarder_charger_dist() {
 	list($tables, ) = base_liste_table_for_dump($exclude);
 	$tables = base_lister_toutes_tables('', $tables);
 
-	$valeurs = array(
+	$valeurs = [
 		'_dir_dump' => joli_repertoire($dir_dump),
 		'_dir_img' => joli_repertoire(_DIR_IMG),
 		'_spipnet' => $GLOBALS['home_server'] . '/' . $GLOBALS['spip_lang'] . '_article1489.html',
@@ -47,11 +47,11 @@ function formulaires_sauvegarder_charger_dist() {
 				'tables',
 				$tables,
 				$exclude,
-				_request('nom_sauvegarde') ? (_request('tables') ? _request('tables') : array()) : null
+				_request('nom_sauvegarde') ? (_request('tables') ? _request('tables') : []) : null
 			)
 		) . "</li></ol>\n",
 		'_prefixe' => base_prefixe_tables(''),
-	);
+	];
 
 	return $valeurs;
 }
@@ -62,10 +62,11 @@ function formulaires_sauvegarder_charger_dist() {
  * @return array
  */
 function formulaires_sauvegarder_verifier_dist() {
-	$erreurs = array();
+	$erreurs = [];
 	if (!$nom = _request('nom_sauvegarde')) {
 		$erreurs['nom_sauvegarde'] = _T('info_obligatoire');
-	} elseif (!preg_match(',^[\w_][\w_.]*$,', $nom)
+	} elseif (
+		!preg_match(',^[\w_][\w_.]*$,', $nom)
 		or basename($nom) !== $nom
 	) {
 		$erreurs['nom_sauvegarde'] = _T('dump:erreur_nom_fichier');
@@ -103,8 +104,8 @@ function formulaires_sauvegarder_traiter_dist() {
 		include_spip('inc/actions');
 		$redirect = generer_action_auteur('sauvegarder', $status_file);
 
-		return array('message_ok' => 'ok', 'redirect' => $redirect);
+		return ['message_ok' => 'ok', 'redirect' => $redirect];
 	} else {
-		return array('message_erreur' => $res);
+		return ['message_erreur' => $res];
 	}
 }

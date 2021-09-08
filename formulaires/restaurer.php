@@ -24,14 +24,14 @@ include_spip('inc/dump');
 function formulaires_restaurer_charger_dist() {
 	// ici on liste tout, les tables exclue sont simplement non cochees
 
-	$valeurs = array(
+	$valeurs = [
 		'_dir_dump' => dump_repertoire(),
 		'choisi' => _request('fichier') ? _request('fichier') : _request('nom'),
 		'nom_sauvegarde' => '',
 		'tout_restaurer' => (_request('check_tables') and !_request('tout_restaurer')) ? '' : 'oui',
 		'fichier' => '',
 		'tri' => 'nom',
-	);
+	];
 
 	return $valeurs;
 }
@@ -42,7 +42,7 @@ function formulaires_restaurer_charger_dist() {
  * @return array
  */
 function formulaires_restaurer_verifier_dist() {
-	$erreurs = array();
+	$erreurs = [];
 	$nom = '';
 	if (!$fichier = _request('fichier') and !$nom = _request('nom_sauvegarde')) {
 		$erreurs['fichier'] = _T('info_obligatoire');
@@ -71,7 +71,7 @@ function formulaires_restaurer_verifier_dist() {
 		}
 		dump_serveur($args);
 		$tables = base_lister_toutes_tables('dump');
-		$tables = base_saisie_tables('tables', $tables, array(), _request('tables') ? _request('tables') : array(), 'dump');
+		$tables = base_saisie_tables('tables', $tables, [], _request('tables') ? _request('tables') : [], 'dump');
 		$erreurs['tables'] = "<ol class='spip'><li class='choix'>\n" . join(
 			"</li>\n<li class='choix'>",
 			$tables
@@ -85,14 +85,15 @@ function formulaires_restaurer_verifier_dist() {
 		}
 	}
 
-	if ($nom
+	if (
+		$nom
 		and (!count($erreurs) or (count($erreurs) == 1 and isset($erreurs['tables'])))
 	) {
 		if (_request('confirm') !== $nom) {
 			$erreurs['message_confirm'] =
 				_T(
 					'dump:info_selection_sauvegarde',
-					array('fichier' => '<i>' . joli_repertoire(dump_repertoire() . $nom) . '</i>')
+					['fichier' => '<i>' . joli_repertoire(dump_repertoire() . $nom) . '</i>']
 				)
 				. "<br /><input type='checkbox' name='confirm' value='$nom' id='confirm' /> ";
 			$erreurs['message_confirm'] .= "<label for='confirm'><strong>";
@@ -136,7 +137,7 @@ function formulaires_restaurer_traiter_dist() {
 	}
 
 	include_spip('inc/dump');
-	$res = dump_init($status_file, $archive, $tables, array('spip_meta' => "impt='oui'"));
+	$res = dump_init($status_file, $archive, $tables, ['spip_meta' => "impt='oui'"]);
 
 	if ($res === true) {
 		// on lance l'action restaurer qui va realiser la sauvegarde
@@ -144,8 +145,8 @@ function formulaires_restaurer_traiter_dist() {
 		include_spip('inc/actions');
 		$redirect = generer_action_auteur('restaurer', $status_file);
 
-		return array('message_ok' => 'ok', 'redirect' => $redirect);
+		return ['message_ok' => 'ok', 'redirect' => $redirect];
 	} else {
-		return array('message_erreur' => $res);
+		return ['message_erreur' => $res];
 	}
 }

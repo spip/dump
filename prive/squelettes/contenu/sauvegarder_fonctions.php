@@ -51,7 +51,7 @@ function dump_afficher_tables_sauvegardees($status_file) {
 		case 0:
 			break;
 		case 1:
-			$corps = "<div style='width:49%;float:left;'><ul class='spip'><li class='spip'>" .join("</li><li class='spip'>", $tables) . '</li></ul></div>';
+			$corps = "<div style='width:49%;float:left;'><ul class='spip'><li class='spip'>" . join("</li><li class='spip'>", $tables) . '</li></ul></div>';
 			break;
 		default:
 			$n = floor(count($tables) / 2);
