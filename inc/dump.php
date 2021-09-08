@@ -32,7 +32,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  */
 function dump_repertoire() {
 	$repertoire = _DIR_DUMP;
-	if (!@file_exists($repertoire)
+	if (
+		!@file_exists($repertoire)
 		and !$repertoire = sous_repertoire(_DIR_DUMP, '', false, true)
 	) {
 		$repertoire = preg_replace(',' . _DIR_TMP . ',', '', _DIR_DUMP);
@@ -58,7 +59,7 @@ function dump_nom_fichier($dir, $extension = 'sqlite') {
 	if (isset($GLOBALS['meta']['nom_site'])) {
 		$site = typo($GLOBALS['meta']['nom_site']); // extraire_multi
 		$site = couper(translitteration(trim($site)), 30, '');
-		$site = preg_replace(array(',\W,is', ',_(?=_),', ',_$,'), array('_', '', ''), $site);
+		$site = preg_replace([',\W,is', ',_(?=_),', ',_$,'], ['_', '', ''], $site);
 	}
 
 	$site .= '_' . date('Ymd');
@@ -85,11 +86,13 @@ function dump_type_serveur() {
 	if (function_exists('spip_versions_sqlite3') and spip_versions_sqlite3()) {
 		return 'sqlite3';
 	}
- 	if (function_exists('spip_versions_sqlite3')) {
-		spip_log("ERREUR sqlite3 n'est pas correctement installé : "
-					."extension_loaded('pdo')=".extension_loaded('pdo')
-					." extension_loaded('pdo_sqlite')=".extension_loaded('pdo_sqlite'),
-				_LOG_ERREUR);
+	if (function_exists('spip_versions_sqlite3')) {
+		spip_log(
+			"ERREUR sqlite3 n'est pas correctement installé : "
+					. "extension_loaded('pdo')=" . extension_loaded('pdo')
+					. " extension_loaded('pdo_sqlite')=" . extension_loaded('pdo_sqlite'),
+			_LOG_ERREUR
+		);
 	}
 
 	return '';
@@ -119,7 +122,7 @@ function dump_connect_args($archive) {
 		return null;
 	}
 
-	return array(dirname($archive), '', '', '', basename($archive, '.sqlite'), $type_serveur, 'spip');
+	return [dirname($archive), '', '', '', basename($archive, '.sqlite'), $type_serveur, 'spip'];
 }
 
 /**
@@ -132,10 +135,11 @@ function dump_connect_args($archive) {
  * @param string $action Pour differencier la sauvegarde de l'import
  * @return bool/string
  */
-function dump_init($status_file, $archive, $tables = null, $where = array(), $action = 'sauvegarde') {
+function dump_init($status_file, $archive, $tables = null, $where = [], $action = 'sauvegarde') {
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
 
-	if (lire_fichier($status_file, $status)
+	if (
+		lire_fichier($status_file, $status)
 		and $status = unserialize($status)
 		and $status['etape'] !== 'fini'
 		and filemtime($status_file) >= time() - 120
@@ -151,7 +155,7 @@ function dump_init($status_file, $archive, $tables = null, $where = array(), $ac
 	if (!$tables) {
 		list($tables, ) = base_liste_table_for_dump(lister_tables_noexport());
 	}
-	$status = array('tables' => $tables, 'where' => $where, 'archive' => $archive);
+	$status = ['tables' => $tables, 'where' => $where, 'archive' => $archive];
 
 	$status['connect'] = dump_connect_args($archive);
 	dump_serveur($status['connect']);
@@ -162,13 +166,13 @@ function dump_init($status_file, $archive, $tables = null, $where = array(), $ac
 	// la constante sert a verifier qu'on utilise bien le connect/dump du plugin,
 	// et pas une base externe homonyme
 	if (!defined('_DUMP_SERVEUR_OK')) {
-		return _T('erreur_connect_dump', array('dump' => 'dump'));
+		return _T('erreur_connect_dump', ['dump' => 'dump']);
 	}
 
 	$status['etape'] = 'init';
 
 	if (!ecrire_fichier($status_file, serialize($status))) {
-		return _T('dump:avis_probleme_ecriture_fichier', array('fichier' => $status_file));
+		return _T('dump:avis_probleme_ecriture_fichier', ['fichier' => $status_file]);
 	}
 
 	return true;
@@ -225,7 +229,8 @@ function dump_relance($redirect) {
  */
 function dump_end($status_file, $action = '') {
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
-	if (!lire_fichier($status_file, $status)
+	if (
+		!lire_fichier($status_file, $status)
 		or !$status = unserialize($status)
 	) {
 		return;
@@ -238,7 +243,7 @@ function dump_end($status_file, $action = '') {
 			break;
 		case 'sauvegarder':
 			// stocker dans le dump la structure de la base source
-			$structure = array();
+			$structure = [];
 			foreach ($status['tables_copiees'] as $t => $n) {
 				$structure[$t] = sql_showtable($t, true);
 			}
@@ -252,8 +257,8 @@ function dump_end($status_file, $action = '') {
 			sql_delete('spip_meta', "nom='dump_structure_temp'", 'dump'); #enlever une vieille structure deja la, au cas ou
 			sql_insertq(
 				'spip_meta',
-				array('nom' => 'dump_structure_temp', 'valeur' => serialize($structure), 'impt' => 'non'),
-				array(),
+				['nom' => 'dump_structure_temp', 'valeur' => serialize($structure), 'impt' => 'non'],
+				[],
 				'dump'
 			);
 			break;
@@ -277,12 +282,12 @@ function dump_lister_sauvegardes($dir, $tri = 'nom', $extension = 'sqlite', $lim
 	$liste_dump = preg_files($dir, '\.' . $extension . '$', $limit, false);
 
 	$n = strlen($dir);
-	$tn = $tl = $tt = $td = array();
+	$tn = $tl = $tt = $td = [];
 	foreach ($liste_dump as $fichier) {
 		$d = filemtime($fichier);
 		$t = filesize($fichier);
 		$fichier = substr($fichier, $n);
-		$tl[] = array('fichier' => $fichier, 'taille' => $t, 'date' => $d);
+		$tl[] = ['fichier' => $fichier, 'taille' => $t, 'date' => $d];
 		$td[] = $d;
 		$tt[] = $t;
 		$tn[] = $fichier;
@@ -306,7 +311,8 @@ function dump_lister_sauvegardes($dir, $tri = 'nom', $extension = 'sqlite', $lim
  */
 function dump_lire_status($status_file) {
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
-	if (!lire_fichier($status_file, $status)
+	if (
+		!lire_fichier($status_file, $status)
 		or !$status = unserialize($status)
 	) {
 		return '';
@@ -322,7 +328,8 @@ function dump_lire_status($status_file) {
  * @return string           Chaine non vide s'il reste des choses a faire
  */
 function dump_verifie_sauvegarde_finie($status_file) {
-	if (!$status = dump_lire_status($status_file)
+	if (
+		!$status = dump_lire_status($status_file)
 		or $status['etape'] !== 'fini'
 	) {
 		return '';
@@ -338,7 +345,8 @@ function dump_verifie_sauvegarde_finie($status_file) {
  * @return string           Nom ou chaine vide si on a un probleme
  */
 function dump_nom_sauvegarde($status_file) {
-	if (!$status = dump_lire_status($status_file)
+	if (
+		!$status = dump_lire_status($status_file)
 		or !file_exists($f = $status['archive'] . '.sqlite')
 	) {
 		return '';
@@ -354,7 +362,8 @@ function dump_nom_sauvegarde($status_file) {
  * @return string/int       Taille ou Chaine vide en cas de probleme
  */
 function dump_taille_sauvegarde($status_file) {
-	if (!$f = dump_nom_sauvegarde($status_file)
+	if (
+		!$f = dump_nom_sauvegarde($status_file)
 		or !$s = filesize($f)
 	) {
 		return '';
@@ -370,7 +379,8 @@ function dump_taille_sauvegarde($status_file) {
  * @return string/int       Date ou Chaine vide en cas de probleme
  */
 function dump_date_sauvegarde($status_file) {
-	if (!$f = dump_nom_sauvegarde($status_file)
+	if (
+		!$f = dump_nom_sauvegarde($status_file)
 		or !$d = filemtime($f)
 	) {
 		return '';

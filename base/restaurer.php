@@ -26,7 +26,8 @@ include_spip('inc/actions');
 function base_restaurer_dist($titre = '', $reprise = false) {
 	$status_file = _DUMP_STATUS_FILE;
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
-	if (!lire_fichier($status_file, $status)
+	if (
+		!lire_fichier($status_file, $status)
 		or !$status = unserialize($status)
 	) {
 	} else {
@@ -56,14 +57,15 @@ function base_restaurer_dist($titre = '', $reprise = false) {
 
 		// au premier coup on ne fait rien sauf afficher l'ecran de sauvegarde
 		if (_request('step')) {
-			$options = array(
+			$options = [
 				'callback_progression' => 'dump_afficher_progres',
 				'max_time' => $max_time,
 				'no_erase_dest' => lister_tables_noerase(),
-				'where' => $status['where'] ? $status['where'] : array(),
-				'desc_tables_dest' => array()
-			);
-			if ($desc = sql_getfetsel('valeur', 'spip_meta', "nom='dump_structure_temp'", '', '', '', '', 'dump')
+				'where' => $status['where'] ? $status['where'] : [],
+				'desc_tables_dest' => []
+			];
+			if (
+				$desc = sql_getfetsel('valeur', 'spip_meta', "nom='dump_structure_temp'", '', '', '', '', 'dump')
 				and $desc = unserialize($desc)
 			) {
 				$options['desc_tables_dest'] = $desc;
@@ -71,8 +73,8 @@ function base_restaurer_dist($titre = '', $reprise = false) {
 			$res = base_copier_tables($status_file, $status['tables'], 'dump', '', $options);
 		} else {
 			// mais on en profite pour reparer les version base pour etre sur de ne pas les perdre
-			sql_updateq('spip_meta', array('impt' => 'oui'), "nom='version_installee'", '', 'dump');
-			sql_updateq('spip_meta', array('impt' => 'oui'), "nom LIKE '%_base_version'", '', 'dump');
+			sql_updateq('spip_meta', ['impt' => 'oui'], "nom='version_installee'", '', 'dump');
+			sql_updateq('spip_meta', ['impt' => 'oui'], "nom LIKE '%_base_version'", '', 'dump');
 		}
 
 		echo("</div>\n");

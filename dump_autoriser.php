@@ -40,5 +40,5 @@ function dump_autoriser() {
  * @return bool          true s'il a le droit, false sinon
  **/
 function autoriser_restaurer_menu_dist($faire, $type, $id, $qui, $opt) {
-    return autoriser('sauvegarder', $type, $id, $qui, $opt);
+	return autoriser('sauvegarder', $type, $id, $qui, $opt);
 }

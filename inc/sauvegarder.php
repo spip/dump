@@ -26,7 +26,8 @@ include_spip('inc/dump');
  */
 function inc_sauvegarder_dist($status_file, $redirect = '') {
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
-	if (!lire_fichier($status_file, $status)
+	if (
+		!lire_fichier($status_file, $status)
 		or !$status = unserialize($status)
 	) {
 	} else {
@@ -54,12 +55,12 @@ function inc_sauvegarder_dist($status_file, $redirect = '') {
 		// au premier coup on ne fait rien sauf afficher l'ecran de sauvegarde
 		$res = false;
 		if (_request('step')) {
-			$options = array(
+			$options = [
 				'callback_progression' => 'dump_afficher_progres',
 				'max_time' => $max_time,
 				'no_erase_dest' => lister_tables_noerase(),
-				'where' => $status['where'] ? $status['where'] : array(),
-			);
+				'where' => $status['where'] ? $status['where'] : [],
+			];
 			$res = base_copier_tables($status_file, $status['tables'], '', 'dump', $options);
 		}
 

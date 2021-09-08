@@ -27,7 +27,7 @@ function dump_afficher_tables_restaurees_erreurs($status_file) {
 	$tables = $status['tables_copiees'];
 
 	$corps = '';
-	$erreurs = array();
+	$erreurs = [];
 
 	if (!$tables) {
 		return '<p>' . _T('dump:erreur_aucune_donnee_restauree') . '</p>';
@@ -37,12 +37,12 @@ function dump_afficher_tables_restaurees_erreurs($status_file) {
 	// qu'on a le bon nombre de donnees
 	foreach ($tables as $t => $n) {
 		if (!sql_showtable($t, true) or $n === 0) {
-			$erreurs[$t] = _T('dump:erreur_table_absente', array('table' => "<strong>$t</strong>"));
+			$erreurs[$t] = _T('dump:erreur_table_absente', ['table' => "<strong>$t</strong>"]);
 		} else {
 			$n = abs(intval($n));
 			$n_dump = intval(sql_countsel($t));
 			if ($n_dump < $n) {
-				$erreurs[$t] = _T('dump:erreur_table_donnees_manquantes', array('table' => "<strong>$t</strong>"));
+				$erreurs[$t] = _T('dump:erreur_table_donnees_manquantes', ['table' => "<strong>$t</strong>"]);
 			};
 		}
 	}
