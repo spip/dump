@@ -307,9 +307,12 @@ function dump_lister_sauvegardes($dir, $tri = 'nom', $extension = 'sqlite', $lim
  * Extraire le statut contenu dans un fichier
  *
  * @param $status_file       Nom du fichier stocke dans _DIR_TMP
- * @return array
+ * @return array|string
  */
 function dump_lire_status($status_file) {
+	if (!$status_file) {
+		return '';
+	}
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
 	if (
 		!lire_fichier($status_file, $status)
@@ -329,7 +332,8 @@ function dump_lire_status($status_file) {
  */
 function dump_verifie_sauvegarde_finie($status_file) {
 	if (
-		!$status = dump_lire_status($status_file)
+		!$status_file
+		or !$status = dump_lire_status($status_file)
 		or $status['etape'] !== 'fini'
 	) {
 		return '';
