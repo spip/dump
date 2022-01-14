@@ -25,6 +25,7 @@ include_spip('inc/dump');
  * @return bool
  */
 function inc_sauvegarder_dist($status_file, $redirect = '') {
+	$status = [];
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
 	if (
 		!lire_fichier($status_file, $status)
@@ -41,7 +42,7 @@ function inc_sauvegarder_dist($status_file, $redirect = '') {
 		include_spip('inc/minipres');
 		@ini_set('zlib.output_compression', '0'); // pour permettre l'affichage au fur et a mesure
 
-		$titre = _T('dump:sauvegarde_en_cours') . ' (' . count($status['tables']) . ') ';
+		$titre = _T('dump:sauvegarde_en_cours') . ' (' . (is_countable($status['tables']) ? count($status['tables']) : 0) . ') ';
 		$balise_img = chercher_filtre('balise_img');
 		$titre .= $balise_img(chemin_image('loader.svg'), '', 'loader');
 		echo(install_debut_html($titre));
@@ -59,7 +60,7 @@ function inc_sauvegarder_dist($status_file, $redirect = '') {
 				'callback_progression' => 'dump_afficher_progres',
 				'max_time' => $max_time,
 				'no_erase_dest' => lister_tables_noerase(),
-				'where' => $status['where'] ? $status['where'] : [],
+				'where' => $status['where'] ?: [],
 			];
 			$res = base_copier_tables($status_file, $status['tables'], '', 'dump', $options);
 		}

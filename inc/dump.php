@@ -136,6 +136,7 @@ function dump_connect_args($archive) {
  * @return bool/string
  */
 function dump_init($status_file, $archive, $tables = null, $where = [], $action = 'sauvegarde') {
+	$status = [];
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
 
 	if (
@@ -153,7 +154,7 @@ function dump_init($status_file, $archive, $tables = null, $where = [], $action 
 	}
 
 	if (!$tables) {
-		list($tables, ) = base_liste_table_for_dump(lister_tables_noexport());
+		[$tables, ] = base_liste_table_for_dump(lister_tables_noexport());
 	}
 	$status = ['tables' => $tables, 'where' => $where, 'archive' => $archive];
 
@@ -228,6 +229,7 @@ function dump_relance($redirect) {
  *     - 'auvegarder : stocker dans le dump la structure de la base source
  */
 function dump_end($status_file, $action = '') {
+	$status = [];
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
 	if (
 		!lire_fichier($status_file, $status)
@@ -310,6 +312,7 @@ function dump_lister_sauvegardes($dir, $tri = 'nom', $extension = 'sqlite', $lim
  * @return array|string
  */
 function dump_lire_status($status_file) {
+	$status = null;
 	if (!$status_file) {
 		return '';
 	}

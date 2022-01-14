@@ -24,6 +24,7 @@ include_spip('inc/actions');
  * @param bool $reprise true s'il s'agit d'une reprise de sauvegarde
  */
 function base_restaurer_dist($titre = '', $reprise = false) {
+	$status = [];
 	$status_file = _DUMP_STATUS_FILE;
 	$status_file = _DIR_TMP . basename($status_file) . '.txt';
 	if (
@@ -43,7 +44,7 @@ function base_restaurer_dist($titre = '', $reprise = false) {
 		include_spip('inc/minipres');
 		@ini_set('zlib.output_compression', '0'); // pour permettre l'affichage au fur et a mesure
 
-		$titre = _T('dump:restauration_en_cours') . ' (' . count($status['tables']) . ') ';
+		$titre = _T('dump:restauration_en_cours') . ' (' . (is_countable($status['tables']) ? count($status['tables']) : 0) . ') ';
 		$balise_img = chercher_filtre('balise_img');
 		$titre .= $balise_img(chemin_image('loader.svg'), '', 'loader');
 		echo(install_debut_html($titre));
@@ -61,7 +62,7 @@ function base_restaurer_dist($titre = '', $reprise = false) {
 				'callback_progression' => 'dump_afficher_progres',
 				'max_time' => $max_time,
 				'no_erase_dest' => lister_tables_noerase(),
-				'where' => $status['where'] ? $status['where'] : [],
+				'where' => $status['where'] ?: [],
 				'desc_tables_dest' => []
 			];
 			if (

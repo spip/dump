@@ -32,7 +32,7 @@ function formulaires_sauvegarder_charger_dist() {
 
 	// ici on liste tout, les tables exclue sont simplement non cochees
 	$exclude = lister_tables_noexport();
-	list($tables, ) = base_liste_table_for_dump($exclude);
+	[$tables, ] = base_liste_table_for_dump($exclude);
 	$tables = base_lister_toutes_tables('', $tables);
 
 	$valeurs = [
@@ -47,7 +47,7 @@ function formulaires_sauvegarder_charger_dist() {
 				'tables',
 				$tables,
 				$exclude,
-				_request('nom_sauvegarde') ? (_request('tables') ? _request('tables') : []) : null
+				_request('nom_sauvegarde') ? (_request('tables') ?: []) : null
 			)
 		) . "</li></ol>\n",
 		'_prefixe' => base_prefixe_tables(''),
@@ -89,7 +89,7 @@ function formulaires_sauvegarder_traiter_dist() {
 		// ici on prend toutes les tables sauf celles exclues par defaut
 		// (tables de cache en pratique)
 		$exclude = lister_tables_noexport();
-		list($tables, ) = base_liste_table_for_dump($exclude);
+		[$tables, ] = base_liste_table_for_dump($exclude);
 		$tables = base_lister_toutes_tables('', $tables, $exclude);
 	} else {
 		$tables = _request('tables');

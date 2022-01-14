@@ -34,6 +34,7 @@ include_spip('inc/dump');
  * @param string $arg
  */
 function action_restaurer_dist($arg = null) {
+	$status = [];
 	if (!$arg) {
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();

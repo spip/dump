@@ -26,7 +26,7 @@ function formulaires_restaurer_charger_dist() {
 
 	$valeurs = [
 		'_dir_dump' => dump_repertoire(),
-		'choisi' => _request('fichier') ? _request('fichier') : _request('nom'),
+		'choisi' => _request('fichier') ?: _request('nom'),
 		'nom_sauvegarde' => '',
 		'tout_restaurer' => (_request('check_tables') and !_request('tout_restaurer')) ? '' : 'oui',
 		'fichier' => '',
@@ -71,7 +71,7 @@ function formulaires_restaurer_verifier_dist() {
 		}
 		dump_serveur($args);
 		$tables = base_lister_toutes_tables('dump');
-		$tables = base_saisie_tables('tables', $tables, [], _request('tables') ? _request('tables') : [], 'dump');
+		$tables = base_saisie_tables('tables', $tables, [], _request('tables') ?: [], 'dump');
 		$erreurs['tables'] = "<ol class='spip'><li class='choix'>\n" . join(
 			"</li>\n<li class='choix'>",
 			$tables
@@ -122,7 +122,7 @@ function formulaires_restaurer_verifier_dist() {
  */
 function formulaires_restaurer_traiter_dist() {
 
-	$archive = (_request('fichier') ? _request('fichier') : _request('nom'));
+	$archive = (_request('fichier') ?: _request('nom'));
 	$dir_dump = dump_repertoire();
 	$archive = $dir_dump . basename($archive, '.sqlite');
 
