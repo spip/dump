@@ -41,11 +41,6 @@ parameters:
 			path: action/restaurer.php
 
 		-
-			message: "#^Undefined variable\\: \\$status$#"
-			count: 2
-			path: action/restaurer.php
-
-		-
 			message: "#^Function _request not found\\.$#"
 			count: 1
 			path: action/sauvegarder.php
@@ -226,14 +221,14 @@ parameters:
 			path: base/restaurer.php
 
 		-
-			message: "#^Undefined variable\\: \\$status$#"
-			count: 2
-			path: base/restaurer.php
-
-		-
 			message: "#^Function include_spip not found\\.$#"
 			count: 1
 			path: connect/dump.php
+
+		-
+			message: "#^File begins with UTF\\-8 BOM character\\. This may cause problems when running the code in the web browser\\.$#"
+			count: 1
+			path: dump_autoriser.php
 
 		-
 			message: "#^Function autoriser not found\\.$#"
@@ -267,7 +262,7 @@ parameters:
 
 		-
 			message: "#^Function _request not found\\.$#"
-			count: 19
+			count: 16
 			path: formulaires/restaurer.php
 
 		-
@@ -307,7 +302,7 @@ parameters:
 
 		-
 			message: "#^Function _request not found\\.$#"
-			count: 9
+			count: 8
 			path: formulaires/sauvegarder.php
 
 		-
@@ -411,11 +406,6 @@ parameters:
 			path: inc/dump.php
 
 		-
-			message: "#^Function spip_versions_sqlite3 not found\\.$#"
-			count: 1
-			path: inc/dump.php
-
-		-
 			message: "#^Function sql_create not found\\.$#"
 			count: 1
 			path: inc/dump.php
@@ -448,11 +438,6 @@ parameters:
 		-
 			message: "#^Function unique not found\\.$#"
 			count: 1
-			path: inc/dump.php
-
-		-
-			message: "#^Undefined variable\\: \\$status$#"
-			count: 6
 			path: inc/dump.php
 
 		-
@@ -518,11 +503,6 @@ parameters:
 		-
 			message: "#^Function spip_connect not found\\.$#"
 			count: 1
-			path: inc/sauvegarder.php
-
-		-
-			message: "#^Undefined variable\\: \\$status$#"
-			count: 2
 			path: inc/sauvegarder.php
 
 		-
