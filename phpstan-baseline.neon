@@ -226,11 +226,6 @@ parameters:
 			path: connect/dump.php
 
 		-
-			message: "#^File begins with UTF\\-8 BOM character\\. This may cause problems when running the code in the web browser\\.$#"
-			count: 1
-			path: dump_autoriser.php
-
-		-
 			message: "#^Function autoriser not found\\.$#"
 			count: 1
 			path: dump_autoriser.php
