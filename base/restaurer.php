@@ -41,7 +41,9 @@ function base_restaurer_dist($titre = '', $reprise = false) {
 		$max_time = time() + $timeout / 2;
 
 		include_spip('inc/minipres');
-		@ini_set('zlib.output_compression', '0'); // pour permettre l'affichage au fur et a mesure
+		if (function_exists('ini_set')) {
+			@ini_set('zlib.output_compression', '0'); // pour permettre l'affichage au fur et a mesure
+		}
 
 		$titre = _T('dump:restauration_en_cours') . ' (' . count($status['tables']) . ') ';
 		$balise_img = chercher_filtre('balise_img');

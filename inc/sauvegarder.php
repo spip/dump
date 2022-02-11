@@ -39,7 +39,9 @@ function inc_sauvegarder_dist($status_file, $redirect = '') {
 		$max_time = time() + $timeout / 2;
 
 		include_spip('inc/minipres');
-		@ini_set('zlib.output_compression', '0'); // pour permettre l'affichage au fur et a mesure
+		if (function_exists('ini_set')) {
+			@ini_set('zlib.output_compression', '0'); // pour permettre l'affichage au fur et a mesure
+		}
 
 		$titre = _T('dump:sauvegarde_en_cours') . ' (' . count($status['tables']) . ') ';
 		$balise_img = chercher_filtre('balise_img');
